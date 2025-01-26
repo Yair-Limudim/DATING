@@ -2,13 +2,18 @@ const express = require('express');
 const cors = require('cors'); // Import the cors package
 const axios = require('axios');
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 // Enable CORS for all routes
 app.use(cors());
 
 // Middleware to parse JSON requests
 app.use(express.json());
+
+app.use(express.static(__dirname));
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'index.html'));
+});
 
 // Endpoint to handle data submission
 app.post('/submit', (req, res) => {
