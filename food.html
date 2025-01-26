@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Food Selection</title>
+  <link rel="icon" href="images/logo.jpg" type="image/png" />
+  <link rel="stylesheet" href="css/food.css" /> <!-- Link to external CSS file -->
+</head>
+
+<body>
+  <div id="foodquestion">
+    <b>What would you like to eat?</b>
+  </div>
+
+  <div class="food-selection">
+    <div class="food-item">
+      <label>
+        <div class="food-name">Bachsh</div>
+        <input type="checkbox" name="food" value="bachsh" id="bachsh" />
+        <img src="food-images/food/bachsh.jpg" alt="bachsh" />
+      </label>
+    </div>
+    <div class="food-item">
+      <label>
+        <div class="food-name">Couscous + Soup</div>
+        <input type="checkbox" name="food" value="couscous_soup" id="couscous_soup" />
+        <img src="food-images/food/Couscous + Soup.jpg" alt="couscous_soup" />
+      </label>
+    </div>
+    <div class="food-item">
+      <label>
+        <div class="food-name">Fish</div>
+        <input type="checkbox" name="food" value="fish" id="fish" />
+        <img src="food-images/food/fish.jpg" alt="fish" />
+      </label>
+    </div>
+    <div class="food-item">
+      <label>
+        <div class="food-name">Pasta</div>
+        <input type="checkbox" name="food" value="pasta" id="pasta" />
+        <img src="food-images/food/pasta.jpg" alt="pasta" />
+      </label>
+    </div>
+    <div class="food-item">
+      <label>
+        <div class="food-name">Pizza</div>
+        <input type="checkbox" name="food" value="pizza" id="pizza" />
+        <img src="food-images/food/pizza.jpg" alt="pizza" />
+      </label>
+    </div>
+    <div class="food-item">
+      <label>
+        <div class="food-name">Salad</div>
+        <input type="checkbox" name="food" value="salad" id="salad" />
+        <img src="food-images/food/salad.jpg" alt="salad" />
+      </label>
+    </div>
+    <div class="food-item">
+      <label>
+        <div class="food-name">Frikaseh</div>
+        <input type="checkbox" name="food" value="frikaseh" id="frikaseh" />
+        <img src="food-images/food/Frikaseh.jpg" alt="frikaseh" />
+      </label>
+    </div>
+    <div class="food-item">
+      <label>
+        <div class="food-name">Sushi</div>
+        <input type="checkbox" name="food" value="sushi" id="sushi" />
+        <img src="food-images/food/sushi.jpeg" alt="sushi" />
+      </label>
+    </div>
+    <div class="food-item">
+      <label>
+        <div class="food-name">Shawarma</div>
+        <input type="checkbox" name="food" value="shawarma" id="shawarma" />
+        <img src="food-images/food/Shawarma.webp" alt="shawarma" />
+      </label>
+    </div>
+    <div class="food-item">
+      <label>
+        <div class="food-name">Steak</div>
+        <input type="checkbox" name="food" value="steak" id="steak" />
+        <img src="food-images/food/steak.jpg" alt="steak" />
+      </label>
+    </div>
+  </div>
+
+  <button class="button" onclick="location.href='dessert.html'">
+    Continue UWU
+  </button>
+
+  <script>
+    const selectedItems = [];
+    const checkboxes = document.querySelectorAll("input[type='checkbox']");
+
+    checkboxes.forEach((checkbox) => {
+      checkbox.addEventListener("click", () => {
+        const foodValue = checkbox.value;
+
+        if (checkbox.checked) {
+          if (!selectedItems.includes(foodValue)) {
+            selectedItems.push(foodValue);
+          }
+        } else {
+          const index = selectedItems.indexOf(foodValue);
+          if (index !== -1) {
+            selectedItems.splice(index, 1);
+          }
+        }
+        console.log("Selected items:", selectedItems);
+        localStorage.setItem('selectedFood', JSON.stringify(selectedItems));
+      });
+    });
+  </script>
+
+</body>
+
+</html>

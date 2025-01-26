@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Activities</title>
+  <link rel="icon" href="images/logo.jpg" type="image/png" />
+  <link rel="stylesheet" href="css/activities.css" />
+</head>
+
+<body>
+  <div id="activityquestion"><b>What are we doing after?</b></div>
+
+  <div class="activities-selection">
+    <div class="activity-item">
+      <label>
+        <div class="food-name">Bowling</div>
+        <input type="checkbox" name="activities" value="bowling" id="bowling" />
+        <img src="activities/bowling.jpg" alt="bowling" />
+      </label>
+    </div>
+    <div class="activity-item">
+      <label>
+        <div class="activity-name">Babylon Park</div>
+        <input type="checkbox" name="activities" value="babylonpark" id="babylonpark" />
+        <img src="activities/babylonpark.jpeg" alt="babylonpark" />
+      </label>
+    </div>
+    <div class="activity-item">
+      <label>
+        <div class="activity-name">Cinema</div>
+        <input type="checkbox" name="activities" value="cinema" id="cinema" />
+        <img src="activities/cinema.jpg" alt="cinema" />
+      </label>
+    </div>
+    <div class="activity-item">
+      <label>
+        <div class="activity-name">Home</div>
+        <input type="checkbox" name="activities" value="home" id="home" />
+        <img src="activities/home.jpg" alt="home" />
+      </label>
+    </div>
+    <div class="activity-item">
+      <label>
+        <div class="activity-name">Park</div>
+        <input type="checkbox" name="activities" value="park" id="park" />
+        <img src="activities/park.jpg" alt="park" />
+      </label>
+    </div>
+    <div class="activity-item">
+      <label>
+        <div class="activity-name">Pool</div>
+        <input type="checkbox" name="activities" value="pool" id="pool" />
+        <img src="activities/pool.jpg" alt="park" />
+      </label>
+    </div>
+    <div class="activity-item">
+      <label>
+        <div class="activity-name">Restaurants</div>
+        <input type="checkbox" name="activities" value="restaurants" id="restaurants" />
+        <img src="activities/restaurants.webp" alt="restaurants" />
+      </label>
+    </div>
+    <div class="activity-item">
+      <label>
+        <div class="activity-name">Sea</div>
+        <input type="checkbox" name="activities" value="sea" id="sea" />
+        <img src="activities/sea.jpg" alt="sea" />
+      </label>
+    </div>
+  </div>
+
+  <button class="button" onclick="location.href='lastpage.html'">
+    Last page
+  </button>
+
+  <script>
+    const selectedActivities = [];
+    const checkboxes = document.querySelectorAll("input[type='checkbox']");
+
+    checkboxes.forEach((checkbox) => {
+      checkbox.addEventListener("click", () => {
+        const activityValue = checkbox.value;
+
+        if (checkbox.checked) {
+          if (!selectedActivities.includes(activityValue)) {
+            selectedActivities.push(activityValue);
+          }
+        } else {
+          const index = selectedActivities.indexOf(activityValue);
+          if (index !== -1) {
+            selectedActivities.splice(index, 1);
+          }
+        }
+        localStorage.setItem('selectedActivity', JSON.stringify(selectedActivities));
+        console.log("Selected activities:", selectedActivities);
+      });
+    });
+  </script>
+
+</body>
+
+</html>

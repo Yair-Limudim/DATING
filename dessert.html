@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dessert</title>
+  <link rel="icon" href="images/logo.jpg" type="image/png" />
+  <link rel="stylesheet" href="css/dessert.css" />
+</head>
+
+<body>
+  <div id="dessertquestion">Which dessert are we eating</div>
+
+  <div class="dessert-selection">
+    <div class="dessert-item">
+      <label>
+        <div class="dessert-name">Alfajores</div>
+        <input type="checkbox" name="dessert" value="alfajores" id="alfajores" />
+        <img src="food-images/dessert/Alfajores.jpg" alt="alfajores" />
+      </label>
+    </div>
+    <div class="dessert-item">
+      <label>
+        <div class="dessert-name">Apple Pie</div>
+        <input type="checkbox" name="dessert" value="apple_pie" id="apple_pie" />
+        <img src="food-images/dessert/Apple Pie.avif" alt="apple_pie" />
+      </label>
+    </div>
+    <div class="dessert-item">
+      <label>
+        <div class="dessert-name">che</div>
+        <input type="checkbox" name="dessert" value="brownies" id="brownies" />
+        <img src="food-images/dessert/Brownies.jpg" alt="brownies" />
+      </label>
+    </div>
+    <div class="dessert-item">
+      <label>
+        <div class="dessert-name">Candies</div>
+        <input type="checkbox" name="dessert" value="candies" id="candies" />
+        <img src="food-images/dessert/Candies.jpg" alt="candies" />
+      </label>
+    </div>
+    <div class="dessert-item">
+      <label>
+        <div class="dessert-name">Cheesecake</div>
+        <input type="checkbox" name="dessert" value="cheesecake" id="cheesecake" />
+        <img src="food-images/dessert/Cheesecake.webp" alt="cheesecake" />
+      </label>
+    </div>
+    <div class="dessert-item">
+      <label>
+        <div class="dessert-name">Choux à la crème</div>
+        <input type="checkbox" name="dessert" value="choux" id="choux" />
+        <img src="food-images/dessert/Choux à la crème.avif" alt="choux" />
+      </label>
+    </div>
+    <div class="dessert-item">
+      <label>
+        <div class="dessert-name">Date</div>
+        <input type="checkbox" name="dessert" value="date" id="date" />
+        <img src="food-images/dessert/Date.jpg" alt="date" />
+      </label>
+    </div>
+    <div class="dessert-item">
+      <label>
+        <div class="dessert-name">Fruit</div>
+        <input type="checkbox" name="dessert" value="fruit" id="fruit" />
+        <img src="food-images/dessert/Fruit.jpeg" alt="fruit" />
+      </label>
+    </div>
+    <div class="dessert-item">
+      <label>
+        <div class="dessert-name">Krembo</div>
+        <input type="checkbox" name="dessert" value="krembo" id="krembo" />
+        <img src="food-images/dessert/Krembo.jpg" alt="krembo" />
+      </label>
+    </div>
+    <div class="dessert-item">
+      <label>
+        <div class="dessert-name">Lemon Pie</div>
+        <input type="checkbox" name="dessert" value="lemon_pie" id="lemon_pie" />
+        <img src="food-images/dessert/Lemon Pie.jpg" alt="lemon_pie" />
+      </label>
+    </div>
+    <div class="dessert-item">
+      <label>
+        <div class="dessert-name">Macarons</div>
+        <input type="checkbox" name="dessert" value="macarons" id="macarons" />
+        <img src="food-images/dessert/macarons.jpg" alt="macarons" />
+      </label>
+    </div>
+    <div class="dessert-item">
+      <label>
+        <div class="dessert-name">Mille Feuille</div>
+        <input type="checkbox" name="dessert" value="mille-feuille" id="mille-feuille" />
+        <img src="food-images/dessert/mille-feuille.jpg" alt="mille-feuille" />
+      </label>
+    </div>
+
+  </div>
+
+  <button class="button" onclick="location.href='activities.html'">
+    Continue UWU
+  </button>
+
+  <script>
+    const selectedDesserts = [];
+    const dessertCheckboxes = document.querySelectorAll("input[type='checkbox']");
+
+    dessertCheckboxes.forEach((checkbox) => {
+      checkbox.addEventListener("click", () => {
+        const dessertValue = checkbox.value;
+
+        if (checkbox.checked) {
+          if (!selectedDesserts.includes(dessertValue)) {
+            selectedDesserts.push(dessertValue);
+          }
+        } else {
+          const index = selectedDesserts.indexOf(dessertValue);
+          if (index !== -1) {
+            selectedDesserts.splice(index, 1);
+          }
+        }
+        localStorage.setItem('selectedDessert', JSON.stringify(selectedDesserts));
+        console.log("Selected desserts:", selectedDesserts);
+      });
+    });
+  </script>
+
+
+</body>
+
+</html>

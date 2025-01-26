@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thank you</title>
+  <link rel="icon" href="images/logo.jpg" type="image/png" />
+  <link rel="stylesheet" href="css/lastpage.css" />
+</head>
+
+<body>
+  <div id="thankyou"><b>Thank you</b></div>
+
+  <img id="rizz" src="excited.gif" alt="rizzler god" class="responsive" />
+  <br />
+
+  <audio id="music" loop>
+    <source src="I'm so happy.mp3" type="audio/mpeg" />
+    Your browser does not support the audio element.
+  </audio>
+
+  <button class="play-music" onclick="playMusic()">Play Music</button>
+
+  <h1>Don't go yet!</h1>
+
+  <button class="button" onclick="location.href='date.html'">
+    Click me UWU
+  </button>
+
+  <script>
+    function playMusic() {
+      const audio = document.getElementById('music');
+      if (audio.paused) {
+        audio.play();
+      } else {
+        audio.pause();
+      }
+    }
+  </script>
+</body>
+
+</html>

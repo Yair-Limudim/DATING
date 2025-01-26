@@ -1,0 +1,47 @@
+/* Apply a beautiful font */
+body {
+  font-family: 'Dancing Script', cursive;
+  background-color: #ffe6e6; /* Soft pink background */
+  text-align: center;
+  padding: 20px;
+}
+
+#valentineQuestion {
+  font-size: 2rem;
+  color: #b30059; /* Romantic deep pink */
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.answerButton {
+  font-family: 'Pacifico', cursive;
+  font-size: 1.5rem;
+  padding: 10px 20px;
+  margin: 10px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.answerButton:hover {
+  transform: scale(1.1); /* Slightly enlarge buttons on hover */
+}
+
+/* Yes button styling */
+.answerButton[onclick*="thankyou.html"] {
+  background-color: #ff4d4d; /* Romantic red */
+  color: white;
+}
+
+/* No button styling */
+#noButton {
+  background-color: #cccccc; /* Soft gray */
+  color: #333333;
+}
+
+.responsive {
+  max-width: 100%;
+  height: auto;
+  margin-top: 20px;
+}
