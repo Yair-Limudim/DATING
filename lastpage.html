@@ -67,16 +67,19 @@
       const food = JSON.parse(localStorage.getItem('selectedFood') || '[]');
       const dessert = JSON.parse(localStorage.getItem('selectedDessert') || '[]');
       const activity = JSON.parse(localStorage.getItem('selectedActivity') || '[]');
+      const notes = String(localStorage.getItem('userNotes') || '');
 
       const data = {
         date: date,
         food: food,
         dessert: dessert,
-        activity: activity
+        activity: activity,
+        notes: notes
       };
 
       // Send data to the server
-      fetch('/submit', {
+      fetch('http://localhost:3000/submit', {
+        // fetch('/submit', { // TODO: to an external server change to this command.
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -96,6 +99,12 @@
         });
     }
     window.onload = collectData;
+
+    localStorage.removeItem('selectedDate');
+    localStorage.removeItem('selectedFood');
+    localStorage.removeItem('selectedDessert');
+    localStorage.removeItem('selectedActivity');
+    localStorage.removeItem('userNotes');
   </script>
 </body>
 

@@ -23,13 +23,13 @@
     <div class="dessert-item">
       <label>
         <div class="dessert-name">Apple Pie</div>
-        <input type="checkbox" name="dessert" value="apple_pie" id="apple_pie" />
+        <input type="checkbox" name="dessert" value="apple pie" id="apple_pie" />
         <img src="food-images/dessert/Apple Pie.avif" alt="apple_pie" />
       </label>
     </div>
     <div class="dessert-item">
       <label>
-        <div class="dessert-name">che</div>
+        <div class="dessert-name">Brownies</div>
         <input type="checkbox" name="dessert" value="brownies" id="brownies" />
         <img src="food-images/dessert/Brownies.jpg" alt="brownies" />
       </label>
@@ -79,7 +79,7 @@
     <div class="dessert-item">
       <label>
         <div class="dessert-name">Lemon Pie</div>
-        <input type="checkbox" name="dessert" value="lemon_pie" id="lemon_pie" />
+        <input type="checkbox" name="dessert" value="lemon pie" id="lemon_pie" />
         <img src="food-images/dessert/Lemon Pie.jpg" alt="lemon_pie" />
       </label>
     </div>
@@ -93,20 +93,27 @@
     <div class="dessert-item">
       <label>
         <div class="dessert-name">Mille Feuille</div>
-        <input type="checkbox" name="dessert" value="mille-feuille" id="mille-feuille" />
+        <input type="checkbox" name="dessert" value="mille feuille" id="mille-feuille" />
         <img src="food-images/dessert/mille-feuille.jpg" alt="mille-feuille" />
       </label>
     </div>
 
   </div>
 
-  <button class="button" onclick="location.href='activities.html'">
-    Continue UWU
-  </button>
+  <div class="navigation-buttons">
+    <button class="button" onclick="location.href='food.html'">Back</button>
+    <button class="button" onclick="location.href='activities.html'">Continue UWU</button>
+  </div>
 
   <script>
-    const selectedDesserts = [];
+    const selectedDesserts = JSON.parse(localStorage.getItem('selectedDessert') || '[]');
     const dessertCheckboxes = document.querySelectorAll("input[type='checkbox']");
+
+    dessertCheckboxes.forEach(checkbox => {
+      if (selectedDesserts.includes(checkbox.value)) {
+        checkbox.checked = true;
+      }
+    });
 
     dessertCheckboxes.forEach((checkbox) => {
       checkbox.addEventListener("click", () => {

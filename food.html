@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Food Selection</title>
   <link rel="icon" href="images/logo.jpg" type="image/png" />
-  <link rel="stylesheet" href="css/food.css" /> <!-- Link to external CSS file -->
+  <link rel="stylesheet" href="css/food.css" />
 </head>
 
 <body>
@@ -25,7 +25,7 @@
     <div class="food-item">
       <label>
         <div class="food-name">Couscous + Soup</div>
-        <input type="checkbox" name="food" value="couscous_soup" id="couscous_soup" />
+        <input type="checkbox" name="food" value="couscous + soup" id="couscous_soup" />
         <img src="food-images/food/Couscous + Soup.jpg" alt="couscous_soup" />
       </label>
     </div>
@@ -87,13 +87,20 @@
     </div>
   </div>
 
-  <button class="button" onclick="location.href='dessert.html'">
-    Continue UWU
-  </button>
+  <div class="navigation-buttons">
+    <button class="button" onclick="location.href='date.html'">Back</button>
+    <button class="button" onclick="location.href='dessert.html'">Continue UWU</button>
+  </div>
 
   <script>
-    const selectedItems = [];
+    const selectedItems = JSON.parse(localStorage.getItem('selectedFood') || '[]');
     const checkboxes = document.querySelectorAll("input[type='checkbox']");
+
+    checkboxes.forEach(checkbox => {
+      if (selectedItems.includes(checkbox.value)) {
+        checkbox.checked = true;
+      }
+    });
 
     checkboxes.forEach((checkbox) => {
       checkbox.addEventListener("click", () => {

@@ -388,21 +388,3 @@ body {
     position: relative;
     z-index: 1000;
 }
-
-#summary h3 {
-    color: #ff6b6b;
-    font-size: 24px;
-    margin-bottom: 15px;
-    text-transform: uppercase;
-}
-
-#summary p {
-    margin: 12px 0;
-    font-size: 18px;
-    color: #e67373;
-}
-
-#summary strong {
-    color: #ff9494;
-    font-weight: bold;
-}
