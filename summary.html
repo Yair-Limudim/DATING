@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Date Summary</title>
+    <link rel="icon" href="images/logo.jpg" type="image/png">
+    <link rel="stylesheet" href="css/summary.css">
+</head>
+
+<body>
+    <div class="summary-container">
+        <h1>✨ Your Perfect Date Plan ✨</h1>
+
+        <div class="summary-card">
+            <div class="summary-item">
+                <span class="emoji">📅</span>
+                <strong>Date:</strong>
+                <span id="summary-date">Loading...</span>
+            </div>
+
+            <div class="summary-item">
+                <span class="emoji">🍴</span>
+                <strong>Food:</strong>
+                <span id="summary-food">No selections yet</span>
+            </div>
+
+            <div class="summary-item">
+                <span class="emoji">🍰</span>
+                <strong>Desserts:</strong>
+                <span id="summary-dessert">Nothing sweet selected</span>
+            </div>
+
+            <div class="summary-item">
+                <span class="emoji">🎉</span>
+                <strong>Activities:</strong>
+                <span id="summary-activity">Let's make memories!</span>
+            </div>
+
+            <div class="summary-item">
+                <span class="emoji">📝</span>
+                <strong>Notes:</strong>
+                <textarea id="user-notes" placeholder="Add special requests or notes for the date..."
+                    rows="4"></textarea>
+            </div>
+        </div>
+
+        <div class="action-buttons">
+            <button class="edit-btn" onclick="window.location.href='activities.html'">✏️ Edit Choices</button>
+            <button class="confirm-btn" onclick="submitPlan()">🌟 Confirm & Send</button>
+        </div>
+    </div>
+
+    <script>
+        // Load saved selections
+        function loadSelections() {
+            const formatList = (items) => {
+                if (!items || items.length === 0) return 'Surprise me!';
+                return items.join(', ');
+            };
+
+            document.getElementById('summary-date').textContent =
+                localStorage.getItem('selectedDate') || 'Anytime you want!';
+
+            document.getElementById('summary-food').textContent =
+                formatList(JSON.parse(localStorage.getItem('selectedFood') || '[]'));
+
+            document.getElementById('summary-dessert').textContent =
+                formatList(JSON.parse(localStorage.getItem('selectedDessert') || '[]'));
+
+            document.getElementById('summary-activity').textContent =
+                formatList(JSON.parse(localStorage.getItem('selectedActivity') || '[]'));
+        }
+
+        // Submit data to server
+        function submitPlan() {
+            const userNotes = document.getElementById('user-notes').value;
+            localStorage.setItem('userNotes', userNotes);
+
+            window.location.href = 'lastpage.html';
+        }
+
+        window.onload = loadSelections;
+    </script>
+</body>
+
+</html>
