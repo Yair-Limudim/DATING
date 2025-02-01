@@ -92,7 +92,7 @@
 
   <script>
     const selectedActivities = JSON.parse(localStorage.getItem('selectedActivity') || '[]');
-    const checkboxes = document.querySelectorAll("input[type='checkbox']");
+    const activityCheckboxes = document.querySelectorAll("input[name='activities']");
 
     activityCheckboxes.forEach(checkbox => {
       if (selectedActivities.includes(checkbox.value)) {
@@ -100,7 +100,7 @@
       }
     });
 
-    checkboxes.forEach((checkbox) => {
+    activityCheckboxes.forEach((checkbox) => {
       checkbox.addEventListener("click", () => {
         const activityValue = checkbox.value;
 
@@ -114,6 +114,7 @@
             selectedActivities.splice(index, 1);
           }
         }
+
         localStorage.setItem('selectedActivity', JSON.stringify(selectedActivities));
         console.log("Selected activities:", selectedActivities);
       });
