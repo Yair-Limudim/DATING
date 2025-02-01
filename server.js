@@ -20,13 +20,20 @@ app.get('/', (req, res) => {
 
 // Endpoint to handle data submission
 app.post('/submit', (req, res) => {
-  const { date, food, dessert, activity } = req.body;
+  const { date, food, dessert, activity, notes } = req.body;
   const formattedFood = food.map(item => `• ${item}`).join('\n');
   const formattedDessert = dessert.map(item => `• ${item}`).join('\n');
   const formattedActivity = activity.map(item => `• ${item}`).join('\n');
+  const formattedNotes = String(notes || '');
 
-  const message = `📅 Date: ${date}\n\n🍔 Food:\n${formattedFood}\n\n🍰 Dessert:\n${formattedDessert}\n\n🎉 Activity:\n${formattedActivity}`;
+  const message = `📅 Date: ${date}\n\n🍴 Food:\n${formattedFood}\n\n🍰 Dessert:\n${formattedDessert}\n\n🎉 Activity:\n${formattedActivity}\n\n📝 Notes:\n${formattedNotes}`;
 
+  const icsDescription = message
+    .replace(`📅 Date: ${date}\n\n`, '')
+    .replace(/\n/g, '\\n');
+
+  // const telegramBotToken = '7759584960:AAGGJs85FrqyMwpp-6pkOkF7DUlXH7a87X8'; //telegram plus
+  // const chatId = '6069572476'; // telegram plus
   const telegramBotToken = '7785340752:AAGIkocqu83ACZM3VY_8l_eaZUCIijskpr0';
   const chatId = '1347634066';
 
@@ -44,7 +51,7 @@ BEGIN:VEVENT
 SUMMARY:Rendez vous avec Ariela 😊
 DTSTART:${date.replace(/-/g, '')}T170000Z
 DTEND:${date.replace(/-/g, '')}T180000Z
-DESCRIPTION:${message.replace(/\n/g, '\\n')}
+DESCRIPTION:${icsDescription}
 END:VEVENT
 END:VCALENDAR
               `.trim();
