@@ -43,9 +43,23 @@
     </div>
     <div class="activity-item">
       <label>
+        <div class="food-name">Mini-Golf</div>
+        <input type="checkbox" name="activities" value="mini golf" id="mini-golf" />
+        <img src="activities/golf.jpg" alt="mini-golf" />
+      </label>
+    </div>
+    <div class="activity-item">
+      <label>
         <div class="activity-name">Park</div>
         <input type="checkbox" name="activities" value="park" id="park" />
         <img src="activities/park.jpg" alt="park" />
+      </label>
+    </div>
+    <div class="activity-item">
+      <label>
+        <div class="food-name">Laser Tag</div>
+        <input type="checkbox" name="activities" value="laser tag" id="laser-tag" />
+        <img src="activities/laser-tag.jpg" alt="laser-tag" />
       </label>
     </div>
     <div class="activity-item">
@@ -71,13 +85,20 @@
     </div>
   </div>
 
-  <button class="button" onclick="location.href='lastpage.html'">
-    Last page
-  </button>
+  <div class="navigation-buttons">
+    <button class="button" onclick="location.href='dessert.html'">Back</button>
+    <button class="button" onclick="location.href='summary.html'">Continue UWU</button>
+  </div>
 
   <script>
-    const selectedActivities = [];
+    const selectedActivities = JSON.parse(localStorage.getItem('selectedActivity') || '[]');
     const checkboxes = document.querySelectorAll("input[type='checkbox']");
+
+    activityCheckboxes.forEach(checkbox => {
+      if (selectedActivities.includes(checkbox.value)) {
+        checkbox.checked = true;
+      }
+    });
 
     checkboxes.forEach((checkbox) => {
       checkbox.addEventListener("click", () => {
