@@ -78,8 +78,8 @@
       };
 
       // Send data to the server
-      // fetch('http://localhost:3000/submit', {
-      fetch('/submit', { // TODO: to an external server change to this command.
+      fetch('http://localhost:3000/submit', {
+        // fetch('/submit', { // TODO: to an external server change to this command.
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -97,14 +97,13 @@
         .catch((error) => {
           console.error('Fetch Error:', error);
         });
+      localStorage.removeItem('selectedDate');
+      localStorage.removeItem('selectedFood');
+      localStorage.removeItem('selectedDessert');
+      localStorage.removeItem('selectedActivity');
+      localStorage.removeItem('userNotes');
     }
     window.onload = collectData;
-
-    localStorage.removeItem('selectedDate');
-    localStorage.removeItem('selectedFood');
-    localStorage.removeItem('selectedDessert');
-    localStorage.removeItem('selectedActivity');
-    localStorage.removeItem('userNotes');
   </script>
 </body>
 
